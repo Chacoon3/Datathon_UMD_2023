@@ -3,6 +3,7 @@
 # *.xlsx
 ~*
 draft*
+*.gz
 
 
 # Byte-compiled / optimized / DLL files
