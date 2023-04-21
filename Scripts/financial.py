@@ -1,5 +1,6 @@
 import math
 
+
 def net_present_value(cash_flow: list[float], discount_rate: float, investment:float) -> float:
     npv = sum([cash_flow[i] / math.pow(1 + discount_rate, i + 1) for i in range(len(cash_flow))])
     return npv
