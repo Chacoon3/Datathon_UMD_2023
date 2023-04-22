@@ -1,4 +1,5 @@
 import pandas as pd
+import regex as re
 
 
 def clean_data(df_main: pd.DataFrame, df_rev_geo: pd.DataFrame) ->pd.DataFrame:
@@ -49,3 +50,9 @@ def __drop_rows(df_main: pd.DataFrame) ->pd.DataFrame:
 
     df.dropna(axis=0, subset = 'NEIGHBORHOOD', how='any', inplace=True)
     return df
+
+
+def col_renamer(name:str) -> str:
+    name = name.lower()
+    name = name.replace(' ', '_')
+    return name
