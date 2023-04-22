@@ -1,0 +1,10 @@
+Property_Valuation_and_Assessment_Data_Tax_Classes_1_2_3_4.csv --> https://data.cityofnewyork.us/City-Government/Property-Valuation-and-Assessment-Data-Tax-Classes/8y4t-faws
+
+property_data.xlsx --> original data
+
+DOF__Summary_of_Neighborhood_Sales_by_Neighborhood_Citywide_by_Borough.csv --> https://data.cityofnewyork.us/City-Government/DOF-Summary-of-Neighborhood-Sales-by-Neighborhood-/5ebm-myj7
+
+NYC rolling sales data --> https://www.nyc.gov/site/finance/taxes/property-rolling-sales-data.page
+data dictionary: https://www.nyc.gov/site/finance/taxes/glossary-property-sales.page
+data encoding dictionary: https://www.nyc.gov/assets/finance/jump/hlpbldgcode.html
+
