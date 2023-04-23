@@ -1,5 +1,7 @@
 import pandas as pd
 import regex as re
+import numpy as np
+from urllib.error import HTTPError
 
 import googlemaps
 import time
@@ -61,17 +63,19 @@ def col_renamer(name:str) -> str:
     return name
 
 
-def get_coordinates(address_list: list | pd.Series, api_key: str, query_interval: float = 0.05):
+def get_coordinates(address_list: list | pd.Series | np.ndarray, api_key: str, query_interval: float = 0.02):
     gm_obj = googlemaps.Client(key = api_key)
     res = []
     for ad in address_list:
             time.sleep(query_interval)
             try:
                 geocode_result = gm_obj.geocode(ad)
-            except:
-                print('error at ' + ad)
-                geocode_result = (0,0)
-            res.append(geocode_result)
+                location = geocode_result[0]['geometry']['location']
+                coordinate = (location['lat'], location['lng'])
+            except HTTPError:
+                print('http error at ' + ad)
+                coordinate = (0,0)
+            res.append(coordinate)
 
             if len(res) % 1000 == 0:
                 print('geocoding in process... completed ' + str(len(res)))
