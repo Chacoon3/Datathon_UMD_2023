@@ -1,6 +1,9 @@
 import pandas as pd
 import regex as re
 
+import googlemaps
+import time
+
 
 def clean_data(df_main: pd.DataFrame, df_rev_geo: pd.DataFrame) ->pd.DataFrame:
     df = df_main.copy(deep = True)
@@ -56,3 +59,20 @@ def col_renamer(name:str) -> str:
     name = name.replace(' ', '_')
     name = name.replace('-', '_')
     return name
+
+
+def get_coordinates(address_list: list | pd.Series, api_key: str, query_interval: float = 0.05):
+    gm_obj = googlemaps.Client(key = api_key)
+    res = []
+    for ad in address_list:
+            time.sleep(query_interval)
+            try:
+                geocode_result = gm_obj.geocode(ad)
+            except:
+                print('error at ' + ad)
+                geocode_result = (0,0)
+            res.append(geocode_result)
+
+            if len(res) % 1000 == 0:
+                print('geocoding in process... completed ' + str(len(res)))
+    return res
