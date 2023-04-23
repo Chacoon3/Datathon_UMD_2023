@@ -12,7 +12,6 @@ def clean_data(df_main: pd.DataFrame, df_rev_geo: pd.DataFrame) ->pd.DataFrame:
     return df
 
 
-
 def __join_geo_info(df_main : pd.DataFrame, df_rev_geo : pd.DataFrame) ->pd.DataFrame:
     df_res = df_main.copy(deep=True)
     df_rev = df_rev_geo.copy(deep=True)
@@ -55,4 +54,5 @@ def __drop_rows(df_main: pd.DataFrame) ->pd.DataFrame:
 def col_renamer(name:str) -> str:
     name = name.lower()
     name = name.replace(' ', '_')
+    name = name.replace('-', '_')
     return name
