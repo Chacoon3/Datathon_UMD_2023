@@ -137,3 +137,4 @@ dmypy.json
 .pyre/
 Documents/kickoff notes.docx
 Data/city_market_tracker.tsv000
+Data/weekly_housing_market_data_most_recent.tsv000
