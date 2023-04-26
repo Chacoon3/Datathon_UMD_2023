@@ -80,3 +80,21 @@ def get_coordinates(address_list: list | pd.Series | np.ndarray, api_key: str, q
             if len(res) % 1000 == 0:
                 print('geocoding in process... completed ' + str(len(res)))
     return res
+
+
+def dataframe_filter_by_percentile(df: pd.DataFrame, by: str, percentile: float):    
+    if by not in df.columns:
+        raise Exception(by +'not found in columns!')
+    
+    df_res = df.copy(deep=True)
+    
+    if df_res[by].dtype == object:
+        val_freq = df_res[by].value_counts()
+        freq_quantile = val_freq.quantile(percentile)
+        val_to_keep = val_freq[val_freq >= freq_quantile].index
+        df_res = df_res.loc[df_res[by].map(lambda v: v in val_to_keep), :]
+    else:
+        quantile = df_res[by].quantile(percentile)
+        df_res = df_res[df_res[by] >= quantile]
+
+    return df_res

@@ -22,7 +22,6 @@ def get_cash_flow(tr:float, tr_growth:float, loan: float, ip:float, ip_growth:fl
         return res
 
 
-
 def NPV_per_unit(property_value_0, property_value_index, popularity_factor, terminal_property_value_growth_rate):
   income_tax_ratio = 0.3
   property_tax_ratio = 0.01
